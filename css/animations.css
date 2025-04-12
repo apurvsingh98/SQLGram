@@ -1,0 +1,296 @@
+/* animations.css - SQLGram Animation Effects */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Pulse Animation for Buttons */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.get-started-btn:hover {
+  animation: pulse 1s infinite;
+}
+
+/* Hover Effects */
+.topic-card, .feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic-card:hover, .feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress Bar Animation */
+.progress-bar {
+  transition: width 0.8s ease;
+}
+
+/* Highlight Text Animation */
+@keyframes highlightText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.highlight-animated {
+  background: linear-gradient(90deg, var(--primary-light), #e6f4ff, var(--primary-light));
+  background-size: 200% 100%;
+  animation: highlightText 3s infinite;
+  color: var(--primary);
+  padding: 0 5px;
+  border-radius: 4px;
+}
+
+/* Shake Animation (for error feedback) */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+  animation: shake 0.6s;
+}
+
+/* Success Animation */
+@keyframes successPulse {
+  0% { box-shadow: 0 0 0 0 rgba(66, 183, 42, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(66, 183, 42, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(66, 183, 42, 0); }
+}
+
+.success-pulse {
+  animation: successPulse 1.5s;
+}
+
+/* Loading Animation for SQL Execution */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+/* Typing Cursor Animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+/* Entrance Animations for Page Sections */
+.hero, .features, .topics, .playground-preview, .about {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero.active, .features.active, .topics.active, .playground-preview.active, .about.active {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+/* Staggered Card Animation */
+.feature-card:nth-child(1), .topic-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2), .topic-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3), .topic-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.feature-card:nth-child(4), .topic-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Button Ripple Effect */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.btn:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Code Editor Animations */
+.editor-container {
+  transition: border-color 0.3s ease;
+}
+
+.editor-container:focus-within {
+  border-color: var(--primary);
+}
+
+/* CodeMirror Cursor Animation */
+.CodeMirror-cursor {
+  border-left: 2px solid var(--primary) !important;
+  animation: blink 1s infinite;
+}
+
+/* Results Animation */
+.result-success, .result-error {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Modal Animations */
+.modal-content {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Hero Background Animation */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(-45deg, #1877F2, #4267B2, #42B72A, #18A0FB);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+/* Floating Effect */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Tab Selection Animation */
+.nav-tabs .nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.nav-tabs .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-tabs .nav-link.active::after {
+  width: 100%;
+}
+
+/* Scroll Indicator Animation */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--white);
+  border-radius: 15px;
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: var(--white);
+  border-radius: 50%;
+  animation: scrollIndicator 2s infinite;
+}
+
+@keyframes scrollIndicator {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
+
+/* Mobile Menu Animation */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .navbar-collapse.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

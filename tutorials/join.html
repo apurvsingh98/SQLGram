@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOIN Statement - SQLGram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+</head>
+<body class="tutorial-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-database me-2"></i>SQLGram
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../index.html#tutorials">Tutorials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../playground.html">SQL Playground</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tutorial Header -->
+    <section class="tutorial-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>JOIN Statement</h1>
+                    <p class="lead">Learn how to combine data from multiple tables</p>
+                    <div class="tutorial-progress">
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theory Section -->
+    <section class="tutorial-content theory-section">
+        <div class="container">
+            <div class="content-card">
+                <h2>Understanding JOINs in SQL</h2>
+                <p>
+                    JOIN clauses are used to combine rows from two or more tables based on a related column between them. 
+                    This is one of the most powerful features of relational databases, allowing you to retrieve data from multiple tables in a single query.
+                </p>
+                
+                <div class="syntax-box">
+                    <h3>Basic JOIN Syntax</h3>
+                    <pre><code>SELECT columns
+FROM table1
+JOIN table2
+ON table1.column = table2.column;</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Types of JOINs</h3>
+                    <ul>
+                        <li><strong>INNER JOIN</strong>: Returns records that have matching values in both tables</li>
+                        <li><strong>LEFT JOIN</strong>: Returns all records from the left table, and the matched records from the right table</li>
+                        <li><strong>RIGHT JOIN</strong>: Returns all records from the right table, and the matched records from the left table</li>
+                        <li><strong>FULL JOIN</strong>: Returns all records when there is a match in either left or right table</li>
+                    </ul>
+                </div>
+                
+                <p>
+                    JOINs are essential for working with relational data. They allow you to normalize your database 
+                    (store data efficiently with minimal redundancy) while still being able to retrieve complete information when needed.
+                </p>
+                
+                <div class="info-box">
+                    <h3>Key Concepts</h3>
+                    <ul>
+                        <li><strong>JOIN Condition</strong>: The ON clause specifies how tables should be related</li>
+                        <li><strong>Table Aliases</strong>: Use short aliases like 'u' for 'users' to make queries more readable</li>
+                        <li><strong>Multiple JOINs</strong>: You can join more than two tables in a single query</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Section -->
+    <section class="tutorial-content example-section">
+        <div class="container">
+            <div class="content-card">
+                <h2>JOIN Examples</h2>
+                
+                <div class="example-box">
+                    <h3>Example 1: Basic INNER JOIN</h3>
+                    <p>Let's join the <code>orders</code> and <code>users</code> tables to see which user placed each order:</p>
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <h4>Query</h4>
+                            <pre><code>SELECT orders.id, users.username, orders.total_amount
+FROM orders
+JOIN users ON orders.user_id = users.id;</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <h4>Result</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>username</th>
+                                            <th>total_amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>john</td>
+                                            <td>1149.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>alice</td>
+                                            <td>699.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>carol</td>
+                                            <td>239.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>bob</td>
+                                            <td>1199.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>john</td>
+                                            <td>89.99</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Example 2: Using Table Aliases</h3>
+                    <p>We can make the query more readable by using table aliases:</p>
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <h4>Query</h4>
+                            <pre><code>SELECT o.id as order_id, u.username, o.total_amount
+FROM orders o
+JOIN users u ON o.user_id = u.id;</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <h4>Result</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>order_id</th>
+                                            <th>username</th>
+                                            <th>total_amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>john</td>
+                                            <td>1149.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>alice</td>
+                                            <td>699.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>carol</td>
+                                            <td>239.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>bob</td>
+                                            <td>1199.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>john</td>
+                                            <td>89.99</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Example 3: LEFT JOIN</h3>
+                    <p>A LEFT JOIN will include all users, even if they haven't placed any orders:</p>
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <h4>Query</h4>
+                            <pre><code>SELECT u.username, o.id as order_id, o.total_amount
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id;</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <h4>Result</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>username</th>
+                                            <th>order_id</th>
+                                            <th>total_amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>john</td>
+                                            <td>1</td>
+                                            <td>1149.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>john</td>
+                                            <td>5</td>
+                                            <td>89.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>alice</td>
+                                            <td>2</td>
+                                            <td>699.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>carol</td>
+                                            <td>3</td>
+                                            <td>239.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td>david</td>
+                                            <td>NULL</td>
+                                            <td>NULL</td>
+                                        </tr>
+                                        <tr>
+                                            <td>bob</td>
+                                            <td>4</td>
+                                            <td>1199.98</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Example 4: Joining Multiple Tables</h3>
+                    <p>We can join three tables to see what products were ordered by which users:</p>
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <h4>Query</h4>
+                            <pre><code>SELECT u.username, o.id as order_id, 
+       p.product_name, oi.quantity, oi.price
+FROM users u
+JOIN orders o ON u.id = o.user_id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN products p ON oi.product_id = p.id;</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <h4>Result</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>username</th>
+                                            <th>order_id</th>
+                                            <th>product_name</th>
+                                            <th>quantity</th>
+                                            <th>price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>john</td>
+                                            <td>1</td>
+                                            <td>Laptop</td>
+                                            <td>1</td>
+                                            <td>999.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>john</td>
+                                            <td>1</td>
+                                            <td>Headphones</td>
+                                            <td>1</td>
+                                            <td>149.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>alice</td>
+                                            <td>2</td>
+                                            <td>Smartphone</td>
+                                            <td>1</td>
+                                            <td>699.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>carol</td>
+                                            <td>3</td>
+                                            <td>Headphones</td>
+                                            <td>1</td>
+                                            <td>149.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>carol</td>
+                                            <td>3</td>
+                                            <td>Coffee Maker</td>
+                                            <td>1</td>
+                                            <td>89.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>bob</td>
+                                            <td>4</td>
+                                            <td>Laptop</td>
+                                            <td>1</td>
+                                            <td>999.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>bob</td>
+                                            <td>4</td>
+                                            <td>Desk Chair</td>
+                                            <td>1</td>
+                                            <td>199.99</td>
+                                        </tr>
+                                        <tr>
+                                            <td>john</td>
+                                            <td>5</td>
+                                            <td>Coffee Maker</td>
+                                            <td>1</td>
+                                            <td>89.99</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section class="tutorial-content practice-section">
+        <div class="container">
+            <div class="content-card">
+                <h2>Practice Exercises</h2>
+                <p>Test your understanding of JOIN statements with these exercises. Type your SQL query in the editor and click "Run" to check your answer.</p>
+                
+                <div class="exercise-box" id="exercise-1">
+                    <h3>Exercise 1</h3>
+                    <p>Write a query to join the <code>users</code> and <code>orders</code> tables to show the username and total order amount for each order.</p>
+                    
+                    <div class="editor-container">
+                        <textarea id="editor-1" class="sql-editor"></textarea>
+                        <div class="editor-buttons">
+                            <button class="btn btn-primary run-btn" data-exercise="1">Run Query</button>
+                            <button class="btn btn-outline-secondary solution-btn" data-exercise="1">Show Solution</button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-feedback" id="result-1">
+                        <div class="result-success d-none">
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i> Correct! Your query returned the expected results.
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table result-table">
+                                    <!-- Results will be inserted here -->
+                                </table>
+                            </div>
+                        </div>
+                        <div class="result-error d-none">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-times-circle me-2"></i> <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-container d-none" id="solution-1">
+                        <div class="alert alert-info">
+                            <h4><i class="fas fa-lightbulb me-2"></i> Solution</h4>
+                            <pre><code>SELECT users.username, orders.total_amount 
+FROM users 
+JOIN orders ON users.id = orders.user_id;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-box" id="exercise-2">
+                    <h3>Exercise 2</h3>
+                    <p>Write a query using table aliases to show all users and their order count (including users with zero orders).</p>
+                    
+                    <div class="editor-container">
+                        <textarea id="editor-2" class="sql-editor"></textarea>
+                        <div class="editor-buttons">
+                            <button class="btn btn-primary run-btn" data-exercise="2">Run Query</button>
+                            <button class="btn btn-outline-secondary solution-btn" data-exercise="2">Show Solution</button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-feedback" id="result-2">
+                        <div class="result-success d-none">
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i> Correct! Your query returned the expected results.
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table result-table">
+                                    <!-- Results will be inserted here -->
+                                </table>
+                            </div>
+                        </div>
+                        <div class="result-error d-none">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-times-circle me-2"></i> <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-container d-none" id="solution-2">
+                        <div class="alert alert-info">
+                            <h4><i class="fas fa-lightbulb me-2"></i> Solution</h4>
+                            <pre><code>SELECT u.username, COUNT(o.id) as order_count
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+GROUP BY u.id, u.username;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-box" id="exercise-3">
+                    <h3>Exercise 3</h3>
+                    <p>Write a query to show the product name, quantity, and total price for each item in order number 1.</p>
+                    
+                    <div class="editor-container">
+                        <textarea id="editor-3" class="sql-editor"></textarea>
+                        <div class="editor-buttons">
+                            <button class="btn btn-primary run-btn" data-exercise="3">Run Query</button>
+                            <button class="btn btn-outline-secondary solution-btn" data-exercise="3">Show Solution</button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-feedback" id="result-3">
+                        <div class="result-success d-none">
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i> Correct! Your query returned the expected results.
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table result-table">
+                                    <!-- Results will be inserted here -->
+                                </table>
+                            </div>
+                        </div>
+                        <div class="result-error d-none">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-times-circle me-2"></i> <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-container d-none" id="solution-3">
+                        <div class="alert alert-info">
+                            <h4><i class="fas fa-lightbulb me-2"></i> Solution</h4>
+                            <pre><code>SELECT p.product_name, oi.quantity, oi.price * oi.quantity as total_price
+FROM order_items oi
+JOIN products p ON oi.product_id = p.id
+WHERE oi.order_id = 1;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-box" id="exercise-4">
+                    <h3>Exercise 4</h3>
+                    <p>Write a query to show the username, product name, and order date for all orders, sorted by order date.</p>
+                    
+                    <div class="editor-container">
+                        <textarea id="editor-4" class="sql-editor"></textarea>
+                        <div class="editor-buttons">
+                            <button class="btn btn-primary run-btn" data-exercise="4">Run Query</button>
+                            <button class="btn btn-outline-secondary solution-btn" data-exercise="4">Show Solution</button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-feedback" id="result-4">
+                        <div class="result-success d-none">
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i> Correct! Your query returned the expected results.
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table result-table">
+                                    <!-- Results will be inserted here -->
+                                </table>
+                            </div>
+                        </div>
+                        <div class="result-error d-none">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-times-circle me-2"></i> <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-container d-none" id="solution-4">
+                        <div class="alert alert-info">
+                            <h4><i class="fas fa-lightbulb me-2"></i> Solution</h4>
+                            <pre><code>SELECT u.username, p.product_name, o.order_date
+FROM users u
+JOIN orders o ON u.id = o.user_id
+JOIN order_items oi ON o.id = oi.order_id
+JOIN products p ON oi.product_id = p.id
+ORDER BY o.order_date;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-box" id="exercise-5">
+                    <h3>Exercise 5</h3>
+                    <p>Write a query to find the total revenue for each product category, including categories with no sales.</p>
+                    
+                    <div class="editor-container">
+                        <textarea id="editor-5" class="sql-editor"></textarea>
+                        <div class="editor-buttons">
+                            <button class="btn btn-primary run-btn" data-exercise="5">Run Query</button>
+                            <button class="btn btn-outline-secondary solution-btn" data-exercise="5">Show Solution</button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-feedback" id="result-5">
+                        <div class="result-success d-none">
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i> Correct! Your query returned the expected results.
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table result-table">
+                                    <!-- Results will be inserted here -->
+                                </table>
+                            </div>
+                        </div>
+                        <div class="result-error d-none">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-times-circle me-2"></i> <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-container d-none" id="solution-5">
+                        <div class="alert alert-info">
+                            <h4><i class="fas fa-lightbulb me-2"></i> Solution</h4>
+                            <pre><code>SELECT p.category, COALESCE(SUM(oi.price * oi.quantity), 0) as total_revenue
+FROM products p
+LEFT JOIN order_items oi ON p.id = oi.product_id
+GROUP BY p.category;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <a href="where.html" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i> Previous: WHERE Clause
+                </a>
+                <a href="group-by.html" class="btn btn-primary">
+                    Next: GROUP BY Clause <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>SQLGram</h3>
+                    <p>Learn SQL the modern way. Interactive, engaging, and completely free.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#tutorials">Tutorials</a></li>
+                        <li><a href="../playground.html">SQL Playground</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/yourusername/sqlgram" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SQLGram. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/sql/sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/sql-engine.js"></script>
+    <script src="../js/exercises.js"></script>
+    <script src="../js/progress-tracker.js"></script>
+</body>
+</html>
+
