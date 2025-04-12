@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELECT Statement - SQLGram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+</head>
+<body class="tutorial-page">
+    <!-- Navigation Bar (similar to index.html but with proper relative links) -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-database me-2"></i>SQLGram
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../index.html#tutorials">Tutorials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../playground.html">SQL Playground</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tutorial Header -->
+    <section class="tutorial-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>SELECT Statement</h1>
+                    <p class="lead">Learn how to retrieve data from a database table</p>
+                    <div class="tutorial-progress">
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theory Section -->
+    <section class="tutorial-content theory-section">
+        <div class="container">
+            <div class="content-card">
+                <h2>Understanding the SELECT Statement</h2>
+                <p>The SELECT statement is the most fundamental SQL command, used to retrieve data from a database. It allows you to specify exactly which columns you want to see and from which tables.</p>
+                
+                <div class="syntax-box">
+                    <h3>Basic Syntax</h3>
+                    <pre><code>SELECT column1, column2, ...
+FROM table_name;</code></pre>
+                </div>
+                
+                <p>To select all columns from a table, you can use the asterisk (*) wildcard character:</p>
+                
+                <div class="syntax-box">
+                    <pre><code>SELECT * FROM table_name;</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Key Concepts</h3>
+                    <ul>
+                        <li><strong>Columns</strong>: Specify which fields you want to retrieve</li>
+                        <li><strong>Table</strong>: The source of your data</li>
+                        <li><strong>Semicolon</strong>: SQL statements end with a semicolon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Section -->
+    <section class="tutorial-content example-section">
+        <div class="container">
+            <div class="content-card">
+                <h2>Examples</h2>
+                
+                <div class="example-box">
+                    <h3>Example 1: Selecting Specific Columns</h3>
+                    <p>Let's say we have a table called <code>users</code> with columns for id, name, email, and age. To retrieve just the name and email:</p>
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <h4>Query</h4>
+                            <pre><code>SELECT name, email 
+FROM users;</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <h4>Result</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>name</th>
+                                            <th>email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>John Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jane Smith</td>
+                                            <td>jane@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bob Johnson</td>
+                                            <td>bob@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Example 2: Selecting All Columns</h3>
+                    <p>To retrieve all columns from the users table:</p>
+                    <div class="code-result-container">
+                        <div class="code-container">
+                            <h4>Query</h4>
+                            <pre><code>SELECT * 
+FROM users;</code></pre>
+                        </div>
+                        <div class="result-container">
+                            <h4>Result</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>name</th>
+                                            <th>email</th>
+                                            <th>age</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>John Doe</td>
+                                            <td>john@example.com</td>
+                                            <td>28</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Jane Smith</td>
+                                            <td>jane@example.com</td>
+                                            <td>34</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Bob Johnson</td>
+                                            <td>bob@example.com</td>
+                                            <td>42</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section class="tutorial-content practice-section">
+        <div class="container">
+            <div class="content-card">
+                <h2>Practice Exercises</h2>
+                <p>Test your understanding of the SELECT statement with these exercises. Type your SQL query in the editor and click "Run" to check your answer.</p>
+                
+                <div class="exercise-box" id="exercise-1">
+                    <h3>Exercise 1</h3>
+                    <p>Write a query to select the <code>product_name</code> and <code>price</code> columns from the <code>products</code> table.</p>
+                    
+                    <div class="editor-container">
+                        <textarea id="editor-1" class="sql-editor"></textarea>
+                        <div class="editor-buttons">
+                            <button class="btn btn-primary run-btn" data-exercise="1">Run Query</button>
+                            <button class="btn btn-outline-secondary solution-btn" data-exercise="1">Show Solution</button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-feedback" id="result-1">
+                        <div class="result-success d-none">
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i> Correct! Your query returned the expected results.
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table result-table">
+                                    <!-- Results will be inserted here -->
+                                </table>
+                            </div>
+                        </div>
+                        <div class="result-error d-none">
+                            <div class="alert alert-danger">
+                                <i class="fas fa-times-circle me-2"></i> <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solution-container d-none" id="solution-1">
+                        <div class="alert alert-info">
+                            <h4><i class="fas fa-lightbulb me-2"></i> Solution</h4>
+                            <pre><code>SELECT product_name, price FROM products;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add more exercises here with increasing difficulty levels -->
+                <!-- Exercise 2, 3, 4, 5 with similar structure -->
+            </div>
+            
+            <div class="navigation-buttons">
+                <a href="../index.html#tutorials" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Topics
+                </a>
+                <a href="where.html" class="btn btn-primary">
+                    Next: WHERE Clause <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (similar to index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>SQLGram</h3>
+                    <p>Learn SQL the modern way. Interactive, engaging, and completely free.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#tutorials">Tutorials</a></li>
+                        <li><a href="../playground.html">SQL Playground</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SQLGram. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/sql/sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/sql-engine.js"></script>
+    <script src="../js/progress-tracker.js"></script>
+    <script>
+        // Initialize CodeMirror editors
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the CodeMirror editor
+            const editor1 = CodeMirror.fromTextArea(document.getElementById('editor-1'), {
+                mode: 'text/x-sql',
+                theme: 'dracula',
+                lineNumbers: true,
+                indentWithTabs: true,
+                autofocus: true,
+                lineWrapping: true
+            });
+            
+            // Set editor height
+            editor1.setSize(null, 100);
+            
+            // Solution button functionality
+            document.querySelectorAll('.solution-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const exerciseId = this.getAttribute('data-exercise');
+                    const solutionContainer = document.getElementById(`solution-${exerciseId}`);
+                    solutionContainer.classList.toggle('d-none');
+                    
+                    if (!solutionContainer.classList.contains('d-none')) {
+                        this.textContent = 'Hide Solution';
+                    } else {
+                        this.textContent = 'Show Solution';
+                    }
+                });
+            });
+            
+            // Run button functionality
+            document.querySelectorAll('.run-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const exerciseId = this.getAttribute('data-exercise');
+                    const editorInstance = editor1; // In a real app, you'd have a map of editors
+                    const query = editorInstance.getValue();
+                    
+                    // For demonstration - in a real app, you'd validate against SQL.js
+                    const resultSuccess = document.querySelector(`#result-${exerciseId} .result-success`);
+                    const resultError = document.querySelector(`#result-${exerciseId} .result-error`);
+                    
+                    // Simple validation for demonstration
+                    if (query.toLowerCase().includes('select') && 
+                        query.toLowerCase().includes('product_name') && 
+                        query.toLowerCase().includes('price') && 
+                        query.toLowerCase().includes('from products')) {
+                        
+                        resultSuccess.classList.remove('d-none');
+                        resultError.classList.add('d-none');
+                        
+                        // Add sample data
+                        const resultTable = resultSuccess.querySelector('.result-table');
+                        resultTable.innerHTML = `
+                            <thead>
+                                <tr>
+                                    <th>product_name</th>
+                                    <th>price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Laptop</td>
+                                    <td>999.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Smartphone</td>
+                                    <td>699.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Headphones</td>
+                                    <td>149.99</td>
+                                </tr>
+                            </tbody>
+                        `;
+                        
+                        // Update progress
+                        updateProgress(20);
+                    } else {
+                        resultSuccess.classList.add('d-none');
+                        resultError.classList.remove('d-none');
+                        resultError.querySelector('.error-message').textContent = 
+                            "Your query doesn't match the expected solution. Make sure you're selecting product_name and price from the products table.";
+                    }
+                });
+            });
+            
+            // Mock function for updating progress
+            function updateProgress(percent) {
+                const progressBar = document.querySelector('.tutorial-progress .progress-bar');
+                const progressText = document.querySelector('.tutorial-progress .progress-text');
+                
+                progressBar.style.width = `${percent}%`;
+                progressText.textContent = `${percent}% Complete`;
+                
+                // In a real app, you'd save this to localStorage or a server
+            }
+        });
+    </script>
+</body>
+</html>
+
