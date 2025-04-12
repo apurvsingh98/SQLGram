@@ -371,12 +371,12 @@ class SQLEngine {
    * @param {Object} config - Pattern configuration
    * @returns {Object} - Validation results
    */
-  _matchQueryPatterns(sqlQuery, config) {
+  _matchQueryPatterns(sqlQuery, exerciseConfig) {
     const query = sqlQuery.toLowerCase();
     
     // Check for required keywords
-    if (config.requiredKeywords) {
-      for (const keyword of config.requiredKeywords) {
+    if (exerciseConfig.requiredKeywords) {
+      for (const keyword of exerciseConfig.requiredKeywords) {
         if (!query.includes(keyword.toLowerCase())) {
           return {
             valid: false,
@@ -387,8 +387,8 @@ class SQLEngine {
     }
     
     // Check for required patterns
-    if (config.requiredPatterns) {
-      for (const pattern of config.requiredPatterns) {
+    if (exerciseConfig.requiredPatterns) {
+      for (const pattern of exerciseConfig.requiredPatterns) {
         const regex = new RegExp(pattern, 'i');
         if (!regex.test(query)) {
           return {
@@ -400,8 +400,8 @@ class SQLEngine {
     }
     
     // Check for forbidden keywords
-    if (config.forbiddenKeywords) {
-      for (const keyword of config.forbiddenKeywords) {
+    if (exerciseConfig.forbiddenKeywords) {
+      for (const keyword of exerciseConfig.forbiddenKeywords) {
         if (query.includes(keyword.toLowerCase())) {
           return {
             valid: false,
