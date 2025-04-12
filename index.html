@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg fixed-top"> 
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-database me-2"></i>SQLGram
@@ -46,7 +46,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 class="display-4 fw-bold">Learn SQL <span class="highlight">Step by Step</span></h1>
-                    <p class="lead my-4">Master the database queries with our interactive tutorials and hands-on exercises. Perfect for beginners and intermediate learners alike.</p>
+                    <p class="lead my-4">Master database queries with our interactive tutorials and hands-on exercises. Perfect for beginners and intermediate learners alike.</p>
                     <div class="d-flex gap-3">
                         <a href="tutorials/select.html" class="btn btn-primary btn-lg px-4 get-started-btn">
                             Get Started <i class="fas fa-arrow-right ms-2"></i>
@@ -336,9 +336,15 @@ ORDER BY username;</code></pre>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/progress-tracker.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/progress-tracker.js"></script>
+<script>
+    // Initialize progress tracking
+    document.addEventListener('DOMContentLoaded', function() {
+        progressTracker.initTracking();
+    });
+</script>
 </body>
 </html>
 
